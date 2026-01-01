@@ -3,21 +3,18 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home';
 import Projects from './pages/Projects' 
-import Agence from './pages/Agence';
+import Agency from './pages/Agency';
 
 function App() { 
 
   return (
-    <div>  
-
+    <div>   
       <Routes>
-        <Route path='/home' element= {<Home/>}> </Route>
+        <Route path='/' element= {<Home/>}> </Route>
         <Route path='/projects' element= {<Projects/>}> </Route>
-        <Route path='/agance' element= {<Agence/>}> </Route>
+        <Route path='/agency' element= {<Agency/>}> </Route>
 
-      </Routes>
-
-
+      </Routes> 
     </div>
   )
 }

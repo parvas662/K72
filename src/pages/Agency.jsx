@@ -1,10 +1,10 @@
-import HeroImage from "../components/agence/HeroImage";
-import HeroSection from "../components/agence/HeroSection";
+import HeroImage from "../components/agence/hero/HeroImage";
+import HeroSection from "../components/agence/hero/HeroSection";
 
 const Agency = () => {
   
   return (
-    <div className=" bg-white w-full h-full"> 
+    <div className="bg-white w-full h-full"> 
       <HeroSection/> 
       <HeroImage/> 
 
