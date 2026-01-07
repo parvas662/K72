@@ -12,7 +12,7 @@ const Home = () => {
       <div className="relative">
         <HomeHeroText/>
         <HomeBottomText/>
-      </div>
+      </div> 
     </div>
   );
 };

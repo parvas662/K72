@@ -1,16 +1,15 @@
+import Expertise from "../components/agence/hero/Expertise";
 import HeroImage from "../components/agence/hero/HeroImage";
 import HeroSection from "../components/agence/hero/HeroSection";
+
 
 const Agency = () => {
   
   return (
-    <div className="bg-white w-full h-full"> 
-      <HeroSection/> 
-      <HeroImage/> 
-
-      <div className="section2 h-screen">
-        
-      </div>
+    <div className="relative bg-white w-full h-full"> 
+    <HeroImage></HeroImage>
+      <HeroSection/>  
+      <Expertise/>
     </div>
   );
 };

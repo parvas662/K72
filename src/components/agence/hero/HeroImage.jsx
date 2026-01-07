@@ -1,7 +1,7 @@
  
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/all";
+import {  ScrollTrigger } from "gsap/all";
 import { useRef, useState } from "react";
 
 import carl from "../../../assets/photos/Carl_480x640.jpg";
@@ -13,34 +13,44 @@ import MEL from "../../../assets/photos/MEL_480x640.jpg";
 import Michele from "../../../assets/photos/Michele_480x640.jpg";
 import Olivier from "../../../assets/photos/Olivier_480x640.jpg";
 
-const HeroImage = () => {
-    const imageArray = [carl, CAMILLE, ChantalG, Olivier, MEGGIE, MEL, Michele, Joel]
+
+const HeroImage = () => { 
+  const imageArray = [carl, CAMILLE, ChantalG, Olivier, MEGGIE, MEL, Michele, Joel]
   const [image, setImage] = useState(imageArray[0]);
-  gsap.registerPlugin(ScrollTrigger)
-  const imageDivRef = useRef(null);
-  useGSAP(function () {  //usegsap hook aligns with react lifecycle, and its do animation cleanup by itself and better than useEffects.
-    gsap.to(imageDivRef.current, {
-      scrollTrigger: {
+  const imageDivRef = useRef(null); 
+  const containerDivRef = useRef(null);
+  gsap.registerPlugin(ScrollTrigger) 
+
+   useGSAP(function () {  //usegsap hook aligns with react lifecycle, and its do animation cleanup by itself and better than useEffects.
+    gsap.to(containerDivRef.current, {
+      scrollTrigger:{
         trigger: imageDivRef.current,
-        start: 'top 20%',
-        end: "top -201%",
-        pin: true,
-        onUpdate: (element) => {
-          const imageIndex = Math.floor(element.progress * (imageArray.length - 1))
+        start:"top 20%", 
+        end:"+=1200 top",
+        scrub:1, 
+        pin:true,
+        markers:true,
+        pinSpacing:true,
+        pinReparent:true,
+        
+        anticipatePin:1,
+        invalidateOnRefresh:true,
+        onUpdate:(element)=>{ 
+          const imageIndex = Math.floor(element.progress * (imageArray.length -1))
+          console.log(imageIndex)
           setImage(imageArray[imageIndex])
-        }
-      }
+       }
+       },
+      
     })
   })
-
-  return (
-    <div>
-      <div ref={imageDivRef} className="absolute z-0 top-[9vw] left-[29vw] rounded-3xl overflow-hidden">
-          <img src={image}
-            className=" h-[44vh] w-[15vw]  object-cover"></img>
-        </div>
-    </div>
+  return (  
+        <div ref={containerDivRef} className="absolute top-[9vw] left-[29vw] w-max rounded-3xl h-[265vh] ">
+          <img src={image} ref={imageDivRef} 
+            className="h-[44vh] w-[15vw]  rounded-3xl object-cover"></img>
+        </div>  
   );
 };
+
 
 export default HeroImage; 
